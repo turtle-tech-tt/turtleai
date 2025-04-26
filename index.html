@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turtle AI</title>
+    <link rel="icon" type="image/png" href="Turtle-Tech Logo ().png">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes backgroundMotion {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: #111;
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            height: 100vh;
+            background: radial-gradient(circle at 30% 30%, #1a1a1a, #0f0f0f);
+            overflow: hidden;
+        }
+
+        .animated-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(50,50,50,0.6));
+            backdrop-filter: blur(50px);
+            background-size: 400% 400%;
+            animation: backgroundMotion 30s ease infinite;
+            z-index: -1;
+        }
+
+        header {
+            position: relative;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        #logo {
+            width: 60px;
+            height: auto;
+            margin-left: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        #logo:hover {
+            transform: scale(1.1);
+        }
+
+        #chat-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            position: relative;
+        }
+
+        #chat-container {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(25px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 60vw;
+            max-height: 70vh;
+            overflow-y: auto;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .message {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #2f2f2f;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .copy-icon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        #input-container {
+            display: flex;
+            margin-top: 20px;
+            width: 60vw;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            padding: 15px;
+            border-radius: 10px 0 0 10px;
+            background: #333;
+            color: white;
+            border: none;
+        }
+
+        #send-button {
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            border: none;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #777;
+        }
+
+
+    </style>
+</head>
+
+<style>
+  body {
+      background-color: rgb(0, 0, 0); /* Set background color to black */
+      margin: 0;
+      color: yellow; /* Default text color */
+      font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+
+  .lemonade {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Center horizontally */
+      position: absolute;
+      top: 20px; /* Position at the top */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Adjust for centering */
+  }
+
+  .lemonade span {
+      font-size: 11px;
+      font-weight: bold;
+      display: inline-block;
+      background: linear-gradient(
+          to left,
+          #00b132,
+          #00b132,
+          #00b132,
+          #00b132,
+          #00b132
+      );
+      background-size: 400% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: growFast 0.3s ease-out forwards, colorFlowFast 2s linear infinite;
+      animation-delay: calc(var(--i) * 0.05s), 0.3s;
+  }
+
+  .space {
+      width: 25px;
+  }
+
+  @keyframes growFast {
+      0% {
+          font-size: 11px;
+          transform: scale(0.5);
+          opacity: 0;
+      }
+      100% {
+          font-size: 70px;
+          transform: scale(1);
+          opacity: 1;
+      }
+  }
+
+  @keyframes colorFlowFast {
+      0% {
+          background-position: 100% center;
+      }
+      100% {
+          background-position: 0% center;
+      }
+  }
+</style>
+</head>
+</head>
+<!-- Animated Title -->
+<div class="lemonade">
+  <span style="--i:0">T</span>
+  <span style="--i:1">u</span>
+  <span style="--i:2">r</span>
+  <span style="--i:3">t</span>
+  <span style="--i:4">l</span>
+  <span style="--i:5">e</span>
+
+  <span class="space"></span>
+
+  <span style="--i:11">A</span>
+  <span style="--i:12">I</span>
+</div>
+</head>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sfondo Animato</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      font-family: sans-serif;
+      position: relative;
+      min-height: 100%;
+    }
+
+    canvas#sfondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .contenuto {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="sfondo"></canvas>
+
+  <script>
+    const canvas = document.getElementById('sfondo');
+    const ctx = canvas.getContext('2d');
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    let particelle = [];
+    const numParticelle = 120;
+    const distanzaMax = 120;
+
+    class Particella {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.6; // velocità media
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.r = 2;
+
+        const rand = Math.random();
+        if (rand < 0.2) {
+          this.colore = '#00ff00'; // verde
+        } else if (rand < 0.4) {
+          this.colore = '#ffd700'; // giallo
+        } else {
+          this.colore = '#ffffff'; // bianco
+        }
+      }
+
+      aggiorna() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+          this.reset();
+        }
+      }
+
+      disegna() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.colore;
+        ctx.fill();
+      }
+    }
+
+    function creaParticelle() {
+      particelle = [];
+      for (let i = 0; i < numParticelle; i++) {
+        particelle.push(new Particella());
+      }
+    }
+
+    function disegnaLinee() {
+      for (let i = 0; i < particelle.length; i++) {
+        for (let j = i + 1; j < particelle.length; j++) {
+          const dx = particelle[i].x - particelle[j].x;
+          const dy = particelle[i].y - particelle[j].y;
+          const distanza = Math.sqrt(dx * dx + dy * dy);
+
+          if (distanza < distanzaMax) {
+            ctx.beginPath();
+            ctx.moveTo(particelle[i].x, particelle[i].y);
+            ctx.lineTo(particelle[j].x, particelle[j].y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distanza / distanzaMax})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function anima() {
+      ctx.clearRect(0, 0, width, height);
+      particelle.forEach(p => {
+        p.aggiorna();
+        p.disegna();
+      });
+      disegnaLinee();
+      requestAnimationFrame(anima);
+    }
+
+    function aggiornaDimensioni() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    window.addEventListener('resize', () => {
+      aggiornaDimensioni();
+      creaParticelle();
+    });
+
+    aggiornaDimensioni();
+    creaParticelle();
+    anima();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+    <div class="animated-background"></div>
+
+    <header>
+        <img id="logo" src="Turtle-Tech Logo ().png" alt="Turtle Tech Logo">
+    </header>
+
+    <div id="chat-wrapper">
+        <div id="chat-container">
+            <div class="message ai">
+                <p>Hello! How can I assist you?</p>
+                <img class="copy-icon" src="airesponsecopyimg.png" title="Copy">
+            </div>
+        </div>
+        <div id="input-container">
+            <textarea id="user-input" placeholder="Message Turtle AI..."></textarea>
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        sendButton.addEventListener('click', sendMessage);
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            chatContainer.innerHTML += `<div class="message user"><p>${message}</p></div>`;
+            userInput.value = '';
+
+            const responseDiv = document.createElement('div');
+            responseDiv.className = 'message ai';
+            responseDiv.innerHTML = '<p>Loading...</p>';
+            chatContainer.appendChild(responseDiv);
+
+            try {
+                const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer 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`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'gemma2-9b-it',
+                        messages: [{ role: 'user', content: message }],
+                        temperature: 0.9,
+                        max_tokens: 200
+                    })
+                });
+
+                const data = await response.json();
+                const aiResponse = data.choices[0].message.content;
+
+                responseDiv.innerHTML = `<p>${aiResponse}</p>`;
+
+                const copyIcon = document.createElement('img');
+                copyIcon.src = 'airesponsecopyimg.png';
+                copyIcon.className = 'copy-icon';
+                copyIcon.title = 'Copy to clipboard';
+
+                copyIcon.addEventListener('click', () => {
+                    navigator.clipboard.writeText(aiResponse);
+                    copyIcon.src = 'aicheckcopiedimg.png';
+                    setTimeout(() => {
+                        copyIcon.src = 'airesponsecopyimg.png';
+                    }, 2000);
+                });
+
+                responseDiv.appendChild(copyIcon);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            } catch (err) {
+                responseDiv.innerHTML = `<p>Error: ${err.message}</p>`;
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
